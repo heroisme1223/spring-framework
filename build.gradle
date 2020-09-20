@@ -4,6 +4,7 @@ plugins {
 	id 'org.jetbrains.kotlin.jvm' version '1.4.10' apply false
 	id 'org.jetbrains.dokka' version '0.10.1' apply false
 	id 'org.asciidoctor.jvm.convert' version '2.4.0'
+	id 'org.asciidoctor.jvm.pdf' version '2.4.0'
 	id 'de.undercouch.download' version '4.1.1'
 	id "io.freefair.aspectj" version '5.1.1' apply false
 	id "com.github.ben-manes.versions" version '0.28.0'
@@ -126,14 +127,14 @@ configure(allprojects) { project ->
 			dependency "org.webjars:webjars-locator-core:0.45"
 			dependency "org.webjars:underscorejs:1.8.3"
 
-			dependencySet(group: 'org.apache.tomcat', version: '9.0.37') {
+			dependencySet(group: 'org.apache.tomcat', version: '9.0.38') {
 				entry 'tomcat-util'
 				entry('tomcat-websocket') {
 					exclude group: "org.apache.tomcat", name: "tomcat-websocket-api"
 					exclude group: "org.apache.tomcat", name: "tomcat-servlet-api"
 				}
 			}
-			dependencySet(group: 'org.apache.tomcat.embed', version: '9.0.37') {
+			dependencySet(group: 'org.apache.tomcat.embed', version: '9.0.38') {
 				entry 'tomcat-embed-core'
 				entry 'tomcat-embed-websocket'
 			}
@@ -195,7 +196,7 @@ configure(allprojects) { project ->
 					exclude group: "org.hamcrest", name: "hamcrest-core"
 				}
 			}
-			dependencySet(group: 'org.mockito', version: '3.5.10') {
+			dependencySet(group: 'org.mockito', version: '3.5.11') {
 				entry('mockito-core') {
 					exclude group: "org.hamcrest", name: "hamcrest-core"
 				}
