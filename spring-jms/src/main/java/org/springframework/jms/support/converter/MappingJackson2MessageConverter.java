@@ -55,7 +55,7 @@ import org.springframework.util.ClassUtils;
  * <li>{@link DeserializationFeature#FAIL_ON_UNKNOWN_PROPERTIES} is disabled</li>
  * </ul>
  *
- * <p>Compatible with Jackson 2.6 and higher, as of Spring 4.3.
+ * <p>Compatible with Jackson 2.9 to 2.12, as of Spring 5.3.
  *
  * @author Mark Pollack
  * @author Dave Syer
@@ -457,11 +457,11 @@ public class MappingJackson2MessageConverter implements SmartMessageConverter, B
 		}
 		Class<?> mappedClass = this.idClassMappings.get(typeId);
 		if (mappedClass != null) {
-			return this.objectMapper.getTypeFactory().constructType(mappedClass);
+			return this.objectMapper.constructType(mappedClass);
 		}
 		try {
 			Class<?> typeClass = ClassUtils.forName(typeId, this.beanClassLoader);
-			return this.objectMapper.getTypeFactory().constructType(typeClass);
+			return this.objectMapper.constructType(typeClass);
 		}
 		catch (Throwable ex) {
 			throw new MessageConversionException("Failed to resolve type id [" + typeId + "]", ex);
